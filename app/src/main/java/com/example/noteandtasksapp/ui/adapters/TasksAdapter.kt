@@ -21,7 +21,6 @@ class TasksAdapter(
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val item: CardView = itemView.findViewById(R.id.task_layout)
         val title: TextView = itemView.findViewById(R.id.task_title)
-        val desc: TextView = itemView.findViewById(R.id.task_desc)
         val delete: ImageView = itemView.findViewById(R.id.task_delete)
         val checkBox: CheckBox = itemView.findViewById(R.id.task_check_box)
     }
@@ -34,7 +33,7 @@ class TasksAdapter(
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.title.text = taskList[position].title
-        holder.desc.text = taskList[position].description
+        holder.checkBox.isChecked = taskList[position].isDone
 
         holder.delete.setOnClickListener {
             onDelete(taskList[position])

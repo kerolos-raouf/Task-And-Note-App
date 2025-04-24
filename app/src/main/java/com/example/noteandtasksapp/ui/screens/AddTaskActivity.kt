@@ -15,24 +15,18 @@ class AddTaskActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_task)
 
         val titleEditText = findViewById<EditText>(R.id.add_task_title)
-        val descEditText = findViewById<EditText>(R.id.add_task_desc)
         val addNoteBtn = findViewById<Button>(R.id.add_task_btn)
 
         val titleValue = intent.getStringExtra(TITLE_KEY)
-        val descValue = intent.getStringExtra(DESC_KEY)
 
         if (titleValue != null) {
             titleEditText.setText(titleValue)
         }
-        if (descValue != null) {
-            descEditText.setText(descValue)
-        }
 
         addNoteBtn.setOnClickListener {
             val title = titleEditText.text.toString()
-            val desc = descEditText.text.toString()
-            val task = Task(title = title, description =  desc)
-            if (title.isEmpty() || desc.isEmpty()) {
+            val task = Task(title = title)
+            if (title.isEmpty()) {
                 Toast.makeText(this, "Please Enter Title and Description", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener

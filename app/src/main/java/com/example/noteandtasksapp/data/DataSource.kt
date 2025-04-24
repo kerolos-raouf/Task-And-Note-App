@@ -13,4 +13,14 @@ object DataSource {
         Note(title = "Test Title", description =  "Test Description"),
         Note(title = "Test Title", description =  "Test Description"),
     )
+
+    fun getEmojiBasedOnProgress(progressPercent: Int): String {
+        return when (progressPercent) {
+            0 -> "😐"
+            in 1..24 -> "😕"
+            in 25..49 -> "😌"
+            in 50..74 -> "🙂"
+            else -> "😄"
+        }
+    }
 }

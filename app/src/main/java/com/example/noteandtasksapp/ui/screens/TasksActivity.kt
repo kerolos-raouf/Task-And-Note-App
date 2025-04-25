@@ -2,15 +2,15 @@ package com.example.noteandtasksapp.ui.screens
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteandtasksapp.R
 import com.example.noteandtasksapp.data.DataSource
 import com.example.noteandtasksapp.ui.adapters.TasksAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class TasksActivity : AppCompatActivity() {
+class TasksActivity : BaseActivity() {
 
     private lateinit var adapter: TasksAdapter
     private lateinit var progressText : TextView
@@ -19,6 +19,10 @@ class TasksActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tasks)
+        findViewById<ImageView>(R.id.arrow_back).setOnClickListener {
+            finish()
+        }
+
         progressText = findViewById(R.id.tasks_progress_text)
         progressEmoji = findViewById(R.id.tasks_progress_emoji)
         setProgress()

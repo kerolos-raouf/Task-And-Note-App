@@ -4,10 +4,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.noteandtasksapp.R
 import com.example.noteandtasksapp.data.DataSource
 import com.example.noteandtasksapp.data.model.Note
@@ -15,10 +11,13 @@ import com.example.noteandtasksapp.data.model.Note
 const val TITLE_KEY = "title_key"
 const val DESC_KEY = "desc_key"
 
-class AddNoteActivity : AppCompatActivity() {
+class AddNoteActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
+        findViewById<Button>(R.id.back_btn).setOnClickListener {
+            finish()
+        }
         val titleEditText = findViewById<EditText>(R.id.add_note_title)
         val descEditText = findViewById<EditText>(R.id.add_note_desc)
         val addNoteBtn = findViewById<Button>(R.id.add_note_btn)
@@ -37,7 +36,7 @@ class AddNoteActivity : AppCompatActivity() {
         addNoteBtn.setOnClickListener {
             val title = titleEditText.text.toString()
             val desc = descEditText.text.toString()
-            val note = Note(title = title, description =  desc)
+            val note = Note(title = title, description = desc)
             if (title.isEmpty() || desc.isEmpty()) {
                 Toast.makeText(this, "Please Enter Title and Description", Toast.LENGTH_SHORT)
                     .show()

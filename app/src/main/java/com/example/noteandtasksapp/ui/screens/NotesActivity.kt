@@ -2,7 +2,7 @@ package com.example.noteandtasksapp.ui.screens
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.noteandtasksapp.R
 import com.example.noteandtasksapp.data.DataSource
@@ -10,7 +10,7 @@ import com.example.noteandtasksapp.ui.adapters.NotesAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class NotesActivity : AppCompatActivity() {
+class NotesActivity : BaseActivity() {
 
     private lateinit var adapter: NotesAdapter
 
@@ -21,6 +21,9 @@ class NotesActivity : AppCompatActivity() {
         findViewById<FloatingActionButton>(R.id.note_fab).setOnClickListener {
             val intent = Intent(this, AddNoteActivity::class.java)
             startActivity(intent)
+        }
+        findViewById<ImageView>(R.id.arrow_back).setOnClickListener {
+            finish()
         }
 
         adapter = NotesAdapter(
